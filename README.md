@@ -1,4 +1,4 @@
-# SPGVLA: Simple Progress Guidance For Vision Language Model
+# SPGVLA: Simple Progress Guidance For Vision Language Action Model
 
 ## Overview
 The LeHome Challenge is an interesting competition that requires participants to use models to fold four types of clothing. Compared to other simple grasping tasks, this is clearly a long-horizon task, where two robotic arms need to work together to fold the garments. The repo integrates the SPG and WM modules, significantly improving the model's performance on long-horizon tasks.
