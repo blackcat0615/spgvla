@@ -41,12 +41,19 @@ This repo chooses the lehome challenge official dataset for testing, the metric 
 
 [spgvla model checkpoint] todo   
 
+
 | experiments setting | top long |  top short | pants long | pants short | mean SR |
-|:-------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|
+
+|:-------:|:--------:|:--------:|:--------:|:--------:|:--------:|
+
 | baseline(SmolVLA)  |  61.67%   |   10%      |   31.67%       |     76.67%     |     45%     |
+
 | baseline+spg |  55%   |   21.67%      |   45%       |     80%     |     50.4%     |
+
 | baseline+spg+bs64  |  63.33%   |   25%      |   33.33%       |     88.33%     |     52.5%     |
+
 | baseline+spg+bs64+wm  |  70%   |   25%      |   45%       |     86.67%     |     56.67%     |
+
 
 
 
