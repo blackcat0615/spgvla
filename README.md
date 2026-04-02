@@ -1,6 +1,12 @@
-# spgvla: Simple Progress Guidance For Vision Language Model
+# SPGVLA: Simple Progress Guidance For Vision Language Model
 
 ## Overview
+The LeHome Challenge is an interesting competition that requires participants to use models to fold four types of clothing. Compared to other simple grasping tasks, this is clearly a long-horizon task, where two robotic arms need to work together to fold the garments. The repo integrates the SPG and WM modules, significantly improving the model's performance on long-horizon tasks.
+
+
+To improve model performance on long-horizon tasks, this paper introduces **the SPG module (Simple Progress Guidance)**, which aims to inform the model of the current progress in real time and address the issue of state confusion in long-horizon tasks.
+
+Additionally, to alleviate the problem of sparse supervision signals during VLA training, this paper incorporates **a world model module**, which provides dense supervision signals to the model and effectively boosts its performance.
 
 
 This repo is based on [lehome-challenge](https://github.com/lehome-official/lehome-challenge) and [kai0](https://github.com/OpenDriveLab/kai0), thanks for their excellent work and useful repo.
@@ -46,8 +52,12 @@ This repo chooses the lehome challenge official dataset for testing, the metric 
 |-------------------------------|----------|-----------|------------|-------------|---------|
 | baseline(SmolVLA)              | 61.67%   | 10%       | 31.67%     | 76.67%      | 45%     |
 | baseline+spg                   | 55%      | 21.67%    | 45%        | 80%         | 50.4%   |
-| baseline+spg+bs64              | 63.33%   | 25%       | 33.33%     | 88.33%      | 52.5%   |
-| baseline+spg+bs64+wm           | 70%      | 25%       | 45%        | 86.67%      | 56.67%  |
+| baseline+spg+bs64              | 63.33%   | 25%       | 33.33%     | **88.33%**      | 52.5%   |
+| baseline+spg+bs64+wm           | **70%**      | **25%**       | **45%**        | 86.67%      | **56.67%**  |
+
+
+### Analysis
+As shown in the table, after adding the SPG and WM modules, the model performance reached 56.67%, an improvement of 11.67% over the baseline.
 
 
 ## Others
