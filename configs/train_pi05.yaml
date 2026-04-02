@@ -1,0 +1,36 @@
+dataset:
+  repo_id: repo_pi05
+  root: /root/gpufree-data/lehome/Datasets/example/four_types_merged
+
+policy:
+  type: pi05
+  device: cuda
+  push_to_hub: false
+  
+  input_features:
+    observation.state:
+      type: STATE
+      shape: [12]
+    observation.images.top_rgb:
+      type: VISUAL
+      shape: [3, 480, 640]
+    observation.images.left_rgb:
+      type: VISUAL
+      shape: [3, 480, 640]
+    observation.images.right_rgb:
+      type: VISUAL
+      shape: [3, 480, 640]
+  
+  output_features:
+    action:
+      type: ACTION
+      shape: [12]
+
+output_dir: outputs/train/pi05_merged
+batch_size: 32
+steps: 30000
+save_freq: 5000
+log_freq: 1000
+
+wandb:
+  enable: false
