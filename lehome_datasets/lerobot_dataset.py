@@ -567,7 +567,7 @@ class LeRobotDataset(torch.utils.data.Dataset):
         video_backend: str | None = None,
         batch_encoding_size: int = 1,
         vcodec: str = "libsvtav1",
-        noise_prob: float = 0.08,
+        noise_prob: float = 0.05,
     ):
         """
         2 modes are available for instantiating this class, depending on 2 different use cases:
