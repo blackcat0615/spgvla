@@ -1,11 +1,15 @@
 dataset:
   repo_id: repo_smolvla
   root: /root/gpufree-data/lehome/Datasets/example/four_types_merged
+  image_transforms:
+    enable: true
+    max_num_transforms: 1
 
 policy:
   type: spgvla
   device: cuda
   push_to_hub: false
+  pretrained_path: /root/gpufree-data/lehome/outputs/train/spgvla_exp14_pg_wm_bs_96_finetune_add_noise_0.05/checkpoints/030000/pretrained_model
   
   input_features:
     observation.state:
@@ -26,8 +30,8 @@ policy:
       type: ACTION
       shape: [12]
 
-output_dir: /root/gpufree-data/lehome/outputs/train/spgvla_exp8_pg_bs_64
-batch_size: 64
+output_dir: /root/gpufree-data/lehome/outputs/train/spgvla_exp16_pg_wm_bs_96_finetune_add_noise_0.08
+batch_size: 96
 steps: 30000
 save_freq: 10000
 log_freq: 100

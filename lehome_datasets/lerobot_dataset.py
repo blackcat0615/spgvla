@@ -20,7 +20,7 @@ import shutil
 import tempfile
 from collections.abc import Callable
 from pathlib import Path
-
+import random
 import datasets
 import numpy as np
 import packaging.version
@@ -567,6 +567,7 @@ class LeRobotDataset(torch.utils.data.Dataset):
         video_backend: str | None = None,
         batch_encoding_size: int = 1,
         vcodec: str = "libsvtav1",
+        noise_prob: float = 0.08,
     ):
         """
         2 modes are available for instantiating this class, depending on 2 different use cases:
@@ -717,6 +718,8 @@ class LeRobotDataset(torch.utils.data.Dataset):
         self._lazy_loading = False
         self._recorded_frames = self.meta.total_frames
         self._writer_closed_for_reading = False
+        self.noise_prob = noise_prob
+        logging.info(f"Initialized LeRobotDataset with noise_prob={self.noise_prob}")
 
         # Load actual data
         try:
@@ -1070,7 +1073,9 @@ class LeRobotDataset(torch.utils.data.Dataset):
             video_frames = self._query_videos(query_timestamps, ep_idx)
             item = {**video_frames, **item}
 
-        if self.image_transforms is not None:
+        
+        use_noise = random.random() < self.noise_prob
+        if self.image_transforms is not None and use_noise:
             image_keys = self.meta.camera_keys
             for cam in image_keys:
                 item[cam] = self.image_transforms(item[cam])
